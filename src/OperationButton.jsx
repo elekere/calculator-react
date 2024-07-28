@@ -7,7 +7,7 @@ export default function OperationButton({ dispatch, operation }) {
         dispatch({ type: ACTIONS.CHOOSE_OPERATION, payload: { operation } })
       }>
       {" "}
-      {digit}
+      {operation}
     </button>
   );
 }
