@@ -44,30 +44,31 @@ function reducer(state, { type, payload }) {
         currentOperand: null,
       };
 
-    case ACTIONS.CLEAR:  
+    case ACTIONS.CLEAR:
       return {};
   }
-}(
+}
 
-function evaluate({currentOperand, previousOperand, operation}) {
+function evaluate({ currentOperand, previousOperand, operation }) {
   const prev = parseFloat(previousOperand);
   const current = parseFloat(currentOperand);
-  if(isNaN(prev) || isNaN(current)) return "";
-  let computation = ""
+  if (isNaN(prev) || isNaN(current)) return "";
+  let computation = "";
   switch (operation) {
     case "+":
       computation = prev + current;
-      break
+      break;
     case "-":
       computation = prev + current;
-      break
+      break;
     case "*":
       computation = prev * current;
-      break
+      break;
     case "÷":
       computation = prev / current;
-      break
+      break;
   }
+  return computation.toString();
 }
 
 function App() {
@@ -99,7 +100,6 @@ function App() {
         <DigitButton digit="5" dispatch={dispatch} />
         <DigitButton digit="6" dispatch={dispatch} />
         <OperationButton operation="+" dispatch={dispatch} />
-        <button>+</button>
         <DigitButton digit="7" dispatch={dispatch} />
         <DigitButton digit="8" dispatch={dispatch} />
         <DigitButton digit="9" dispatch={dispatch} />
