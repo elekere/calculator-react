@@ -81,7 +81,10 @@ function App() {
     <>
       <div className="calculator-grid">
         <div className="output">
-          <div className="previous-operand"> {previousOperand}</div>
+          <div className="previous-operand">
+            {" "}
+            {previousOperand} {operation}
+          </div>
           <div className="current-operand">{currentOperand}</div>
         </div>
         <button
