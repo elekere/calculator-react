@@ -61,10 +61,10 @@ function evaluate({currentOperand, previousOperand, operation}) {
     case "-":
       computation = prev + current;
       break
-    case "+":
+    case "*":
       computation = prev * current;
       break
-    case "+":
+    case "÷":
       computation = prev / current;
       break
   }
@@ -89,7 +89,7 @@ function App() {
           AC
         </button>
         <button>DEL</button>
-        <OperationButton operation="/" dispatch={dispatch} />
+        <OperationButton operation="÷" dispatch={dispatch} />
 
         <DigitButton digit="1" dispatch={dispatch} />
         <DigitButton digit="2" dispatch={dispatch} />
@@ -106,7 +106,6 @@ function App() {
         <OperationButton operation="-" dispatch={dispatch} />
         <DigitButton digit="." dispatch={dispatch} />
         <DigitButton digit="0" dispatch={dispatch} />
-        <OperationButton operation="/" dispatch={dispatch} />
         <button className="span-two"> =</button>
       </div>
     </>
