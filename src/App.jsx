@@ -27,6 +27,7 @@ function reducer(state, { type, payload }) {
       if (payload.digit == "." && state.currentOperand.includes(".")) {
         return state;
       }
+
       return {
         ...state,
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
@@ -84,6 +85,18 @@ function reducer(state, { type, payload }) {
       ) {
         return state;
       }
+      if (state.previousOperand == null && state.currentOperand.includes(".")) {
+        return state;
+      }
+      // attempting to fix 'Uncaught TypeError: state.currentOperand is null'
+      // It occurs when a decimal point is entered as the first entry against an
+      // operation
+      if (state.previousOperand != null && state.currentOperand == ".") {
+        return state;
+      }
+
+      //
+
       return {
         ...state,
         overwrite: true,
@@ -104,7 +117,7 @@ function evaluate({ currentOperand, previousOperand, operation }) {
       computation = prev + current;
       break;
     case "-":
-      computation = prev + current;
+      computation = prev - current;
       break;
     case "×":
       computation = prev * current;
