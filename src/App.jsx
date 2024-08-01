@@ -90,14 +90,10 @@ function reducer(state, { type, payload }) {
       // It occurs when a decimal point is entered as the first entry against an
       // operation
 
-      if (state.previousOperand == null && payload.digit == ".") {
-        return 0;
-      }
-      if (state.currentOperand == null && payload.digit == ".") {
-        return 0;
-      }
-
-      //
+      // if (state.previousOperand == null && payload.digit == ".") {
+      //   return;
+      // }
+      if (state.currentOperand == undefined) return;
 
       return {
         ...state,
