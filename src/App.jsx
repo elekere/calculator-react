@@ -85,16 +85,6 @@ function reducer(state, { type, payload }) {
       ) {
         return state;
       }
-
-      // attempting to fix 'Uncaught TypeError: state.currentOperand is null'
-      // It occurs when a decimal point is entered as the first entry against an
-      // operation
-
-      // if (state.previousOperand == null && payload.digit == ".") {
-      //   return;
-      // }
-      if (state.currentOperand == undefined) return;
-
       return {
         ...state,
         overwrite: true,
